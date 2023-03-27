@@ -1,5 +1,6 @@
 import { GifCard } from "./GifCard";
 import { useFetchGifs } from "../hooks/useFetchGifs";
+import { PropTypes } from "prop-types";
 
 export const GifGrid = ({ query }) => {
   const { gifsData, isLoading } = useFetchGifs(query);
@@ -7,7 +8,7 @@ export const GifGrid = ({ query }) => {
   return (
     <>
       <h3>{query}</h3>
-      {isLoading && <h2>Cargando...</h2>}
+      {isLoading && <h2>Loading...</h2>}
       <div className="card-grid">
         {gifsData.map((gifData) => (
           <GifCard key={gifData.id} {...gifData} />
@@ -15,4 +16,8 @@ export const GifGrid = ({ query }) => {
       </div>
     </>
   );
+};
+
+GifGrid.propTypes = {
+  query: PropTypes.string.isRequired,
 };

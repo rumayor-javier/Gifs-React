@@ -1,4 +1,5 @@
 import { useState } from "react";
+import PropTypes from "prop-types";
 
 export const SearchInput = ({ onAddQuery }) => {
   const [inputValue, setInputValue] = useState("");
@@ -16,7 +17,7 @@ export const SearchInput = ({ onAddQuery }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} aria-label="form">
       <input
         type="text"
         placeholder="Search Gifs"
@@ -26,4 +27,8 @@ export const SearchInput = ({ onAddQuery }) => {
       <button type="submit">Search</button>
     </form>
   );
+};
+
+SearchInput.propTypes = {
+  onAddQuery: PropTypes.func.isRequired,
 };
